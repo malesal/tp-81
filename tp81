@@ -1,25 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool encajanDientes(const vector<int> & superiores, const vector<int> & inferiores);
+bool EncajanDientes(const vector<int> &dientesSuperiores, const vector<int> &dientesInferiores);
 
 int main() {
     int numCasos;
     cin >> numCasos;
 
-    for (int caso = 0; caso < numCasos; ++caso) {
-        vector<int> superiores(6);
-        vector<int> inferiores(6);
+    for (int caso = 1; caso <= numCasos; caso++) {
+        vector<int> dientesSuperiores(6);
+        vector<int> dientesInferiores(6);
 
-        for (int i = 0; i < 6; ++i) {
-            cin >> superiores[i];
+        for (int i = 0; i < 6; i++) {
+            cin >> dientesSuperiores[i];
         }
 
-        for (int i = 0; i < 6; ++i) {
-            cin >> inferiores[i];
+        for (int i = 0; i < 6; i++) {
+            cin >> dientesInferiores[i];
         }
 
-        if (encajanDientes(superiores, inferiores)) {
+        if (EncajanDientes(dientesSuperiores, dientesInferiores)) {
             cout << "SI" << endl;
         } else {
             cout << "NO" << endl;
@@ -28,9 +28,9 @@ int main() {
 
     return 0;
 }
-bool encajanDientes(const vector<int> & superiores, const vector<int> & inferiores) {
-    for (size_t i = 0; i < superiores.size(); ++i) {
-        if (superiores[i] != inferiores[i]) {
+bool EncajanDientes(const vector<int> &dientesSuperiores, const vector<int> &dientesInferiores) {
+    for (int i = 0; i < 6; i++) {
+        if (dientesSuperiores[i] != dientesInferiores[i]) {
             return false;
         }
     }
