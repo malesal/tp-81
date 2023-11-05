@@ -1,23 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool EncajanDientes(const vector<int> &dientesSuperiores, const vector<int> &dientesInferiores);
-
+void LeerDientes(vector<int> & dientes);
+bool EncajanDientes(vector<int> dientesSuperiores, vector<int> dientesInferiores);
 int main() {
     int numCasos;
     cin >> numCasos;
 
-    for (int caso = 1; caso <= numCasos; caso++) {
+    for (int i = 1; i <= numCasos; i++) {
         vector<int> dientesSuperiores(6);
         vector<int> dientesInferiores(6);
 
-        for (int i = 0; i < 6; i++) {
-            cin >> dientesSuperiores[i];
-        }
-
-        for (int i = 0; i < 6; i++) {
-            cin >> dientesInferiores[i];
-        }
+        LeerDientes(dientesSuperiores);
+        LeerDientes(dientesInferiores);
 
         if (EncajanDientes(dientesSuperiores, dientesInferiores)) {
             cout << "SI" << endl;
@@ -25,14 +20,21 @@ int main() {
             cout << "NO" << endl;
         }
     }
-
     return 0;
 }
-bool EncajanDientes(const vector<int> &dientesSuperiores, const vector<int> &dientesInferiores) {
+void LeerDientes(vector<int> & dientes) {
+    for (int i = 0; i < 6; i++) {
+        cin >> dientes[i];
+    }
+}
+
+bool EncajanDientes(vector<int> dientesSuperiores, vector<int> dientesInferiores) {
+    bool encajan = true;
     for (int i = 0; i < 6; i++) {
         if (dientesSuperiores[i] != dientesInferiores[i]) {
-            return false;
+            encajan = false;
+            break; 
         }
     }
-    return true;
+    return encajan;
 }
